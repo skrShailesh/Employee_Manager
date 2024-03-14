@@ -1,6 +1,12 @@
 package com.shailesh.EmpManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,16 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
-    @RequestMapping("m")// the URL is mapped using this . eg:- http://localhost:8080/m    (m: is the end point)
-    public static String myMethod(){
-        return "<h1> START </h1>";
+    // @RequestMapping("m")// the URL is mapped using this . eg:- http://localhost:8080/m    (m: is the end point)
+   
+
+     //List<Employee> employees=new ArrayList<>();
+
+    @Autowired
+     Service service;
+
+    @GetMapping("employees")
+    public List<Employee> getAllEmployee(){
+        return  service.readEmployees();
     }
-    
-    @GetMapping("process-form")
-    public static String getDeta(@RequestParam int num1,@RequestParam int num2){
-        int res=num1+num2;
-        //return String.valueOf(res);
-        // OR 
-        return "Result: "+res;
+    @PostMapping("employees")
+    public String createEmployee(@RequestBody Employee employee){
+        // employees.add(employee);
+        return service.createEmployee(employee);
+        
     }
 }
