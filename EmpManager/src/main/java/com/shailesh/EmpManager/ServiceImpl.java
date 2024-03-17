@@ -2,7 +2,7 @@ package com.shailesh.EmpManager;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@org.springframework.stereotype.Service
 public class ServiceImpl implements Service{
 
     List<Employee> employees=new ArrayList<>();

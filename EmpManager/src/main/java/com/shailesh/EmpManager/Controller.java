@@ -20,10 +20,10 @@ public class Controller {
    
 
      //List<Employee> employees=new ArrayList<>();
-    Service service= new ServiceImpl() ;
+   // Service service= new ServiceImpl() ;
 
-    // @Autowired
-    //  Service service;
+    @Autowired
+     Service service;
 
     @GetMapping("employees")
     public List<Employee> getAllEmployee(){
